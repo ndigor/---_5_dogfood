@@ -90,5 +90,4 @@ const ProfilePage = () => {
         </div>
     );
 };
-
 export default ProfilePage;
