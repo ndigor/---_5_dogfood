@@ -23,12 +23,16 @@ export const ProfilePage = () => {
             <img src={data?.avatar}/> 
         </div>
         <form action="">
+            Введите имя
             <input id='name' type='text' placeholder='Имя' value={name} onChange={(igor)=>{setName(igor.currentTarget.value)}}/>
             &nbsp;&nbsp;
+            Введите Вашу группу
             <input id='group' type='text' placeholder='лучшая' value={group} onChange={(лучшая)=>{setGroup(лучшая.currentTarget.value)}}/>
             &nbsp;&nbsp;
             <input id='group' type='text' placeholder='Frontend' value={speciality} onChange={(Frontend)=>{setSpeciality(Frontend.currentTarget.value)}}/>
+            
             &nbsp;&nbsp;
+            Жмякните кнопочку
             <button type='submit' name='Отправить'>Отправить</button>
         </form>
         {/* {errors ? } */}
