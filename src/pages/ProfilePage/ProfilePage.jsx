@@ -37,6 +37,7 @@ const ProfilePage = () => {
                 <div className='profile__info'>
                     <div className='avatar__wrap'>
                         <img src={userData?.avatar} alt='avatar' className='avatar__img' />
+                        <img style={{width:"200px", height:"200px"}}src={data.avatar}/>
                     </div>
                     <div className='profile__info_detail'>
                         <p className='profile__name'>{userData.name}</p>

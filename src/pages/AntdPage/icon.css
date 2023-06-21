@@ -1,0 +1,13 @@
+.icon {
+    fill: blue!important;
+    /* color: blue; */
+    /* stroke: blue; */
+    /* height: 200px; */
+    /* background-color: aqua; */
+
+}
+
+.wrapper > .ant-btn {
+    color: red;
+    background-color: yellow;
+}

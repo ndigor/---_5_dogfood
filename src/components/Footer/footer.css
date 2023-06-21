@@ -1,0 +1,93 @@
+.footer {
+    width: 100%;
+    background-color: #ffe44d;
+}
+.footer__wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    min-height: 154px;
+    gap: 30px;
+}
+
+.footer__copy {
+    display: grid;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+.footer__nav {
+    display: grid;
+    gap: 10px;
+    align-items: center;
+}
+
+.footer__nav a:hover {
+    color: orange;
+}
+
+.footer__nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.footer__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+}
+.footer__item {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 14px;
+    color: #1a1a1a;
+}
+
+.footer__item h3 {
+    margin-bottom: 8px;
+}
+
+.icon__wrapper {
+    color: #1a1a1a;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    background-size: cover;
+    opacity: 0.4;
+    transition: all 0.2s;
+}
+.telegram-icon {
+    background: url(./logo-telegram.svg) no-repeat;
+}
+
+.whatsapp-icon {
+    background: url(./logo-whatsapp.svg) no-repeat;
+}
+.viber-icon {
+    background: url(./logo-viber.svg) no-repeat;
+}
+.instagram-icon {
+    background: url(./logo-instagram.svg) no-repeat;
+}
+.vk-icon {
+    background: url(./logo-vk.svg) no-repeat;
+}
+
+.icon:hover {
+    opacity: 1;
+}
+
+@media (max-width: 820px) {
+    .footer__wrapper {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .footer__copy {
+        justify-content: center;
+    }
+}

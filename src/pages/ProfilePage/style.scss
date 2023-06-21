@@ -1,7 +1,9 @@
 .profile {
     &__avatar {
-        width: 200px;
-        height: 200px;
+        width: 20%;
+        height: 100px;
         border-radius: 50%;
     }
+
+    <img style={{width:"200px", height:"200px"}}src={data.avatar}/>
 }

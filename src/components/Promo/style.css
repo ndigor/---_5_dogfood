@@ -1,0 +1,17 @@
+.promo__block {
+    border: 1px solid;
+    border-radius: 8px;
+    position: relative;
+}
+.promo__img {
+    background-image: radial-gradient(circle, orange, forestgreen, transparent);
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    right: 20px;
+    top: calc(50% - 20px);
+}
+.promo__text {
+    padding: 20px;
+}
