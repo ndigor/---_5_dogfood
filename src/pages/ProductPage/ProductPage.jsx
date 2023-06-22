@@ -14,7 +14,7 @@ export const ProductPage = () => {
 
     const { productRating, user, handleLike } = useContext(CardsContext);
 
-console.log({productRating});
+//console.log({productRating});
 
     useEffect(() => {
         if (id) {

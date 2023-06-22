@@ -1,5 +1,4 @@
-// initial state
-// ----------------------------------------------------
+
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { api } from "../../utils/api";
@@ -17,10 +16,10 @@ export const getUser = createAsyncThunk("getUser", async function (str) {
   return data;
 });
 
-// export const updateUser = createAsyncThunk("updateUser", async function (avatar) {
-//     const data = await api.updateUserAvatar(data);
-//     return data;
-//   });
+ export const updateUser = createAsyncThunk("updateUser", async function (avatar) {
+     const data = await api.updateUserAvatar(data);
+     return data;
+   });
 // ----------------------------------------------------
 // slice // reducer
 // ----------------------------------------------------
