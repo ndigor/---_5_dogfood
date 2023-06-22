@@ -7,6 +7,7 @@ import { getMyUser, updateUser } from '../../storage/slices/userSlice'
 import './style.scss'
 import { BaseButton } from '../../components/Button/Button'
 import { useForm } from 'react-hook-form'
+import {GoBack} from '../../components/GoBack/GoBack'
 
 export   {ProfilePage} from './ProfilePage';
 
@@ -55,7 +56,7 @@ const ProfilePage = () => {
                         <img
                             className='inputPost__preview'
                             src={previewAvatar}
-                            onError={(e) => (e.currentTarget.src = defaultImage)}
+                            onError={(e) => (e.currentTarget.src = '')}
                             alt='avatar'
                         />
                     </div>
@@ -79,7 +80,7 @@ const ProfilePage = () => {
                             className='profile__form_input'
                             placeholder='Ваш новый аватар'
                             onChange={(e) => setPreviewAvatar(e.target.value)}
-                            onError={() => setPreviewAvatar(defaultImage)}
+                            onError={() => setPreviewAvatar('')}
                         />
                         <button type='submit' className='profile_btn'>
                             Сохранить
