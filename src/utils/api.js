@@ -19,6 +19,21 @@ class Api {
         headers: this.headers
     }).then(onResponse)
   }
+
+  updateUserInfo(data) {
+    return fetch(`${this.baseUrl}/users/me`, {
+    ...this.freshHeaders(),
+      method: "PATCH",
+      body: JSON.stringify(data)
+    }).then(onResponse);
+  }
+  updateUserAvatar(data) {
+    return fetch(`${this.baseUrl}/users/me/avatar`, {
+    ...this.freshHeaders(),
+      method: "PATCH",
+      body: JSON.stringify(data)
+    }).then(onResponse);
+  }
   searchProducts(path) {
     return fetch(`${this.baseUrl}/products/search?query=${path}`, {
         headers: this.headers
