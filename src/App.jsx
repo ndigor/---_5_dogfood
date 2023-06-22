@@ -22,7 +22,7 @@ import { RegisterForm } from "./components/Auth/Register/Register";
 import { ResetPass } from "./components/Auth/ResetPass/ResetPass";
 import { useDispatch } from "react-redux";
 import { setList } from "./storage/slices/productsSlice";
-import { ProfilePage } from "./pages/ProfilePage/Profile";
+import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
 
 
 function App() {
