@@ -1,8 +1,6 @@
-
 import React, { useState } from "react";
 
 import { useForm } from 'react-hook-form';
-// import { api } from "../../utils/api";
 import '../index.scss'
 import { Link } from "react-router-dom";
 import { api } from "../../../utils/api";
@@ -41,7 +39,7 @@ export const LoginForm = () => {
 
     return (
         <div className="incontent" >
-            <h3>Login form</h3>
+            <h3>Авторизация</h3>
             <form className=" form-example" onSubmit={handleSubmit(sendData)}>
                 <div>
                     <input className="form__input" type="text" {...register("email", { ...emailRegister })} placeholder="email" />

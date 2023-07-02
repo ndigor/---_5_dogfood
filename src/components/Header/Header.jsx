@@ -40,7 +40,7 @@ export const Header = (props) => {
                     <Profile  className='header__icon' />
                     </Link>
                     <Link to={'/profile'}>
-                        profile
+                        <h3>Пользователь</h3>
                     </Link>
                 </div>
             </div>

@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-vars */
+
 import React, { useCallback, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUser, updateUser } from '../../storage/slices/userSlice'
+import { getMyUser, getUser, updateUser } from '../../storage/slices/userSlice'
 import './style.scss'
 import { BaseButton } from '../../components/Button/Button'
 import { useForm } from 'react-hook-form'
@@ -34,25 +36,22 @@ export const ProfilePage = ({ setModalActive }) => {
             {loading || !user._id ? 'loading' :
                 <div className='profile'>
                     <div>
-                        <form className=" form-example" onSubmit={handleSubmit(sendData)}>
-                            <div>
-                            <img src={user?.avatar} className='profile__avatar' alt='this is avatar' />
-                                <input className="form__input" type="text" {...register("name")} placeholder="Имя" defaultValue={user.name} />
-                            </div>
-                            <div className="form__pass">
-                                <input className="form__input" type="text" {...register("about")} placeholder="Обо мне" defaultValue={user.about} />
-                            </div>
-                        
-
-                           
-                        </form>
+                        <h1>Профиль пользователя</h1>
+                    </div>
+                    <div><h2>Игорь Недякин</h2></div>
+                    
+                    <div>
+                        <h3><i><strong>igorfok08@yandex.ru</strong></i></h3>
+                        <p>Системный администратор, и может быть, но врятли Frontend-разработчик</p>
                     </div>
                     <div>
                         <form className=" form-example" onSubmit={handleSubmit(sendData)}>
-                            
+                            <img src={user?.avatar} className='profile__avatar' alt='this is avatar' />
+                        
                         </form>
-                        <BaseButton onClick={logout} >Выход</BaseButton>
-                        <BaseButton type="submit">Отправить</BaseButton>
+                       
+                        
+
                     </div>
                 </div>
             }

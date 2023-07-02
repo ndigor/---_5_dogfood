@@ -1,12 +1,12 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import React from "react";
+import { Route, Routes } from "react-router"
 
-export const RouterAuth = (props) => {
-    return (
-        <Routes>
-            <Route path="/" element={<div>NOT auth 404</div>} />
-        </Routes>
-    );
-};
+
+export const RouterAuth = () => {
+
+    return (<Routes>
+        <Route path="/" element={<div>NOT notauth 404</div>} />
+    </Routes>)
+}
 
 

@@ -1,90 +1,83 @@
-import { Link, useNavigate } from 'react-router-dom';
-import '../forms.css';
-import React, { useContext } from 'react';
-import { userApi } from '../../../utils/api';
+import React, { useState } from "react";
+
 import { useForm } from 'react-hook-form';
-import {
-    checkingTheFillingEmail,
-    checkingTheFillingGroup,
-    passwordValidationCheck,
-} from './RegistrationForm.jsx';
-import { EyeFill, EyeSlashFill } from 'react-bootstrap-icons';
-import { CardContext } from '../../../context/cardContext';
+import { api } from "../../utils/api";
+import { Link } from "react-router-dom";
 
-const RegistrationForm = (props) => {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm({ mode: 'onBlur' });
-    const navigate = useNavigate();
-    const { showPassword, setShowPassword } = useContext(CardContext);
+export const RegistrationForm = ({ isRequired = true }) => {
 
-    const sendRegistrData = async (data) => {
-        return await userApi
-            .signUp(data)
-            .then(() => navigate('/auth'))
-            .catch((error) => alert(error));
-    };
+    const [type, setType] = useState(true);
+    const [tags, setTags] = useState('');
+
+
+    const { register, handleSubmit, formState: { errors } } = useForm({mode: "onBlur"});
+
+    const sendData = (data) => {
+
+        const newData = data.tags.split(' ');
+const         sendedData = {...data, tags: data.tags.split(' ')}
+        ({ data })
+        //    await  api.updateUser(sendedData)
+    }
+
+
+    const nameRegister = {
+        required: {
+            value: isRequired,
+            message: 'Имя тоже обязательно!'
+        },
+        maxLength: { value: 4, message: '4 is max' },
+        minLength: { value: 2, message: '2 is min' },
+    }
+    const emailRegister = { required: 'Имя тоже обязательно!' }
+    const passwordRegister = {
+        required: {
+            value: isRequired,
+            message: 'pass is required!'
+        },
+        pattern: {
+            value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+            message: 'Пароль должен содержать минимум 8 символов, одну большую букву латинского алфавита и одну цифру'
+        }
+    }
+
 
     return (
-        <div className='form__wrapper' onSubmit={handleSubmit(sendRegistrData)}>
-            <h2 className='form__title'>Регистрация</h2>
-            <form className='form__container'>
-                <div className='input__wrap'>
-                    <input
-                        type='email'
-                        {...register('email', { ...checkingTheFillingEmail })}
-                        placeholder='Email'
-                        className={errors?.email ? 'form__input warning' : 'form__input'}
-                    />
-                    {errors?.email && (
-                        <span className='warning__text'> {errors?.email.message}</span>
-                    )}
+        <div className="incontent" >
+            <h3>Registration form</h3>
+            <form className=" form-example" onSubmit={handleSubmit(sendData)}>
+                <div>
+                    <input className="form__input" type="text" {...register("name", nameRegister)} placeholder="name" />
+                    {errors?.name && <span> {errors?.name.message}</span>}
                 </div>
-                <div className='input__wrap'>
-                    <div className='input__wrap_pass'>
-                        <input
-                            type={showPassword ? 'text' : 'password'}
-                            {...register('password', { ...passwordValidationCheck })}
-                            placeholder='Пароль'
-                            className={errors?.password ? 'form__input warning' : 'form__input'}
-                        />
-                        <span
-                            className='input__eye_show'
-                            onClick={() => setShowPassword((state) => !state)}
-                        >
-                            {showPassword ? <EyeFill /> : <EyeSlashFill />}
-                        </span>
-                    </div>
-                    {errors?.password && (
-                        <span className='warning__text'> {errors?.password.message}</span>
-                    )}
+                <div>
+                    <input className="form__input" type="text" {...register("email", { ...emailRegister })} placeholder="email" />
+                    {errors?.email && <span> {errors?.email.message}</span>}
                 </div>
-                <div className='input__wrap'>
-                    <input
-                        type='number'
-                        {...register('group', { ...checkingTheFillingGroup })}
-                        placeholder='group'
-                        className={errors?.group ? 'form__input warning' : 'form__input'}
-                    />
-                    {errors?.group && (
-                        <span className='warning__text'> {errors?.group.message}</span>
-                    )}
+                <div className="form__pass">
+                    <input className="form__input" type={!type ? 'password' : 'text'} {...register("password", { ...passwordRegister })} placeholder="password" />
+                    <span onClick={() => setType(!type)} className={`form__pass__icon`}>{type ? '0' : 'X'}</span>
+                    {errors?.password && <span> {errors?.password.message}</span>}
                 </div>
-                <p className='form__info'>
-                    Регистрируясь на сайте, вы соглашаетесь с нашими Правилами и Политикой
-                    конфиденциальности и соглашаетесь на информационную рассылку.
-                </p>
-                <button type='submit' className='form__btn form__btn-basic'>
-                    Зарегистрироваться
-                </button>
+                <div>
+                    <Link  to={'/login'}>Авторизация</Link>
+                </div>
+                <label htmlFor="tags">Введите теги через запятую / слеш / пробел</label>
+                {/* <input type="text" {...register("tags")} placeholder="tags" /> */}
+                {/* <textarea {...register("tags2")}  placeholder="tags2" cols="30" rows="10" onChange={(e)=>setTags(e.target.value)} ></textarea> */}
+                {/* <select></select> */}
+                <button type="submit"> submit</button>
             </form>
-            <Link to='/auth' className='form__link'>
-                <button className='form__btn'>Назад к авторизации</button>
-            </Link>
         </div>
-    );
-};
+    )
+}
 
-export default RegistrationForm;
+  // const formControl = useForm();
+
+    // formControl.register()
+
+    // handleSubmit ->
+//    const handleSubmit = (e, data) => {
+    // .... -> data
+    // return sendData(data)
+//    }

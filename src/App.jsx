@@ -85,8 +85,6 @@ function App() {
       .then((data) => setCards(filteredCards(data)))
   }, [debounceValueInApp]);
 
-
-
   useEffect(() => {
     Promise.all([api.getUserInfo(), api.getProductList()]).then(([userData, data]) => {
       setUser(userData);
@@ -98,6 +96,8 @@ function App() {
       setFavorites(fav);
     });
   }, [dispatch]);
+
+  
 
   const cardsValue = {
     handleLike: handleProductLike,
@@ -126,6 +126,12 @@ function App() {
         <ResetPass />
       </Modal>
     } />
+  <Route path="/src/pages/ProfilePage/ProfilePage.jsx" element={
+      <Modal modalActive={modalActive} setModalActive={setModalActive} >
+        <ProfilePage />
+      </Modal>
+    } />
+
   </>
 
 
@@ -154,6 +160,7 @@ function App() {
                   {authRoutes}
                   <Route path="/stylebook" element={<AntdPage />} />
                   <Route path="*" element={<div>NOT FOUND 404</div>} />
+                  <Route path="./pages/ProfilePage/ProfilePage.jsx" element={ProfilePage} />
                 </Routes>
                 :
                 <Navigate to={"/not-found"} />

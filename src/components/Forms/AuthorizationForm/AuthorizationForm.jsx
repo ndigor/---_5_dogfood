@@ -1,80 +1,62 @@
-import { Link, useNavigate } from 'react-router-dom';
-import '../forms.css';
-import React, { useContext } from 'react';
+import React, { useState } from "react";
+
 import { useForm } from 'react-hook-form';
-import { userApi } from '../../../utils/apiUser';
-import { checkingTheFillingEmail, passwordValidationCheck } from '../../../utils/utils';
-import { CardContext } from '../../../context/cardContext';
-import { EyeFill, EyeSlashFill } from 'react-bootstrap-icons';
+// import { api } from "../../utils/api";
+import '../index.scss'
+import { Link } from "react-router-dom";
+import { api } from "../../../utils/api";
+import { BaseButton } from "../../Button/Button";
 
-const AuthorizationForm = (props) => {
-    const { setActiveModal, setHaveTokenAuth, showPassword, setShowPassword } =
-        useContext(CardContext);
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm({ mode: 'onBlur' });
-    const navigate = useNavigate();
 
-    const sendAuthData = async (data) => {
-        return await userApi
-            .signIn(data)
-            .then((res) => {
-                localStorage.setItem('token', res.token);
-                setActiveModal(false);
-                setHaveTokenAuth(true);
-                navigate('/');
-            })
-            .catch((error) => alert('Oooops, ' + error));
-    };
+export const emailRegister = { required: 'Имя тоже обязательно!' }
+export const passwordRegister = {
+    required: {
+        value: true,
+        message: 'pass is required!'
+    },
+    pattern: {
+        value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+        message: 'Пароль должен содержать минимум 8 символов, одну большую букву латинского алфавита и одну цифру'
+    }
+}
+
+
+export const LoginForm = () => {
+
+    const [type, setType] = useState(true)
+
+
+    const { register, handleSubmit, formState: { errors } } = useForm({ mode: "onBlur" });
+
+    const sendData = async (data) => {
+        try {
+            const res = await api.signin(data);
+            localStorage.setItem('token', res.token);
+        } catch (error) {
+            alert('OOooops');
+        }
+    }
+
 
     return (
-        <div className='form__wrapper'>
-            <h2 className='form__title'>Вход</h2>
-            <form className='form__container' onSubmit={handleSubmit(sendAuthData)}>
-                <div className='input__wrap'>
-                    <input
-                        type='email'
-                        {...register('email', { ...checkingTheFillingEmail })}
-                        placeholder='Email'
-                        className={errors?.email ? 'form__input warning' : 'form__input'}
-                    />
-                    {errors?.email && (
-                        <span className='warning__text'> {errors?.email.message}</span>
-                    )}
+        <div className="incontent" >
+            <h3>Login form</h3>
+            <form className=" form-example" onSubmit={handleSubmit(sendData)}>
+                <div>
+                    <input className="form__input" type="text" {...register("email", { ...emailRegister })} placeholder="email" />
+                    {errors?.email && <span> {errors?.email.message}</span>}
                 </div>
-                <div className='input__wrap'>
-                    <div className='input__wrap_pass'>
-                        <input
-                            type={showPassword ? 'text' : 'password'}
-                            {...register('password', { ...passwordValidationCheck })}
-                            placeholder='Пароль'
-                            className={errors?.password ? 'form__input warning' : 'form__input'}
-                        />
-                        <span
-                            className='input__eye_show'
-                            onClick={() => setShowPassword((state) => !state)}
-                        >
-                            {showPassword ? <EyeFill /> : <EyeSlashFill />}
-                        </span>
-                    </div>
-                    {errors?.password && (
-                        <span className='warning__text'> {errors?.password.message}</span>
-                    )}
+                <div className="form__pass">
+                    <input className="form__input" type={!type ? 'password' : 'text'} {...register("password", { ...passwordRegister })} placeholder="password" />
+                    <span onClick={() => setType(!type)} className={`form__pass__icon`}>{type ? '0' : 'X'}</span>
+                    {errors?.password && <span> {errors?.password.message}</span>}
                 </div>
-                <Link to='/newPass' className='form__info-right'>
-                    <p className='form__info pass__recovery'>Восстановить пароль</p>
-                </Link>
-                <button type='submit' className='form__btn form__btn-basic'>
-                    Войти
-                </button>
+                <div className="auth__links">
+                    <Link className="auth__link" to={'/register'}>Регистрация</Link>
+                    <Link className="auth__link" to={'/reset-pass'}>Забыли пароль?</Link>
+                </div>
+                <BaseButton type="submit">Войти </BaseButton>
             </form>
-            <Link to='/register' className='form__link'>
-                <button className='form__btn'>Зарегистрироваться</button>
-            </Link>
         </div>
-    );
-};
-
-export default AuthorizationForm;
+    )
+}
