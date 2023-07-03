@@ -21,13 +21,18 @@ getUserInfo() {
 }
 
 /*Тут будет запрос на редактирование данных пользователя*/
-editUserInfo(data) {
-  return fetch(`${this.baseUserUrl}/me`, {
-      method: 'PATCH',
-      headers: { ...this.headers, authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQ2YjE1ZThmYmM0NzNmYTg5Y2U1NzYiLCJncm91cCI6Imdyb3VwLTEyIiwiaWF0IjoxNjgyMzU4NjE5LCJleHAiOjE3MTM4OTQ2MTl9.79zquAglgG_3kM45B1yt1aDx_WOc1Tm1oIzzQeNmg6o" },
-      body: JSON.stringify(data),
-  }).then(onResponse);
-}
+edit(user, about){
+  return fetch('https://api.react-learning.ru/posts/users/me', {
+  method: 'PATCH',
+  headers: {
+    authorization: 'IgorN eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQ2YjE1ZThmYmM0NzNmYTg5Y2U1NzYiLCJncm91cCI6Imdyb3VwLTEyIiwiaWF0IjoxNjgyMzU4NjE5LCJleHAiOjE3MTM4OTQ2MTl9.79zquAglgG_3kM45B1yt1aDx_WOc1Tm1oIzzQeNmg6o',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    name: 'Василий',
+    about: 'Программист'
+  })
+});
 /*Метод редактирования аватара пользователя*/
 getResetUserAvatar(data) {
   return fetch(`${this.baseUrl}/users/me/avatar`, {
