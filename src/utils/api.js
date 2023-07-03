@@ -33,14 +33,6 @@ edit(user, about){
     about: 'Программист'
   })
 });
-/*Метод редактирования аватара пользователя*/
-getResetUserAvatar(data) {
-  return fetch(`${this.baseUrl}/users/me/avatar`, {
-    method: 'PATCH',
-    ...this.freshHeaders(),
-    body: JSON.stringify(data),
-  }).then(Response);
-}
 
 
 
