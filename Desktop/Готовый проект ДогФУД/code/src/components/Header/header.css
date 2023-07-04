@@ -1,0 +1,23 @@
+.header {
+    width: 100%;
+    background-color: #ffe44d;
+    padding: 12px 0;
+}
+
+.header__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 80px;
+}
+
+.header__logo {
+    display: flex;
+    align-items: flex-start;
+}
+
+@media (max-width: 776px) {
+    .header__wrapper {
+        gap: 30px;
+    }
+}

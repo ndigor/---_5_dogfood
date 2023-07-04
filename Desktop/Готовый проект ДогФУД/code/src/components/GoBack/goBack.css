@@ -1,0 +1,17 @@
+.product__back {
+    width: fit-content;
+    font-size: 14px;
+    line-height: 143%;
+    color: #535557;
+    transition: all 0.2s;
+    /* background: url(./left-arrow.svg) no-repeat; */
+    padding-left: 10px;
+    align-items: center;
+}
+
+.product__back:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: bold;
+    color: orange;
+}

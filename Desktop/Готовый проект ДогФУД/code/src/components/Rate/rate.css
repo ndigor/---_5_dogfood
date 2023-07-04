@@ -1,0 +1,12 @@
+.star {
+    width: 16px;
+    height: auto;
+}
+.modify {
+    cursor: pointer;
+}
+
+.filled {
+    fill: #ffe44d;
+    stroke: #ffe44d;
+}

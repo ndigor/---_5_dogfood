@@ -1,0 +1,34 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    max-width: 1124px;
+    padding: 16px;
+    margin: 0 auto;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+ol,
+ul {
+    margin: 0;
+    list-style: none;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
