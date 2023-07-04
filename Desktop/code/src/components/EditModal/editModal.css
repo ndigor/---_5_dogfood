@@ -1,0 +1,55 @@
+.editModal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: hsla(0, 0%, 0%, 0.5);
+}
+
+.editModal__body {
+    border-radius: 10px;
+    background: #cccccc;
+    padding: 20px;
+    width: 500px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.editModal__field {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+}
+.editModal__field input {
+    border: 1px solid transparent;
+    border-radius: 6px;
+    padding: 10px;
+    width: 60%;
+}
+
+.editModal__send {
+    border: 1px solid transparent;
+    padding: 5px 10px;
+    color: white;
+    margin-top: 20px;
+    background: lightslategray;
+    border-radius: 6px;
+}
+
+.editModal__close {
+    border: 1px solid transparent;
+    background: transparent;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}

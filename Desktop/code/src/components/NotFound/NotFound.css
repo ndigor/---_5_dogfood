@@ -1,0 +1,24 @@
+.NotFound__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.NotFound__img {
+    width: 80px;
+    height: 80px;
+}
+.NotFound__title {
+    font-weight: 700;
+    line-height: 130%;
+    color: #1a1a1a;
+}
+
+.NotFound__btn {
+    padding: 9px 16px;
+    border: 1px solid #cfd8dc;
+    border-radius: 87px;
+    background: #ffe44d;
+}

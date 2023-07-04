@@ -1,0 +1,18 @@
+.favorite__wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 50px 0;
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #ffe44d;
+}
+
+.favorite__title {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 114%;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}

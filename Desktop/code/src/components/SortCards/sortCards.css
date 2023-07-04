@@ -1,0 +1,35 @@
+.sort__cards_wrapper {
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0px 2px 4px rgba(40, 41, 61, 0.04),
+        0px 8px 16px rgba(96, 97, 112, 0.16);
+    border-radius: 12px;
+}
+
+.sort__cards {
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.sort__cards_text {
+    font-size: 14px;
+    line-height: 143%;
+    color: #7b8e98;
+    cursor: pointer;
+}
+
+.sort__cards_text_active {
+    color: #1a1a1a;
+}
+
+@media (max-width: 776px) {
+    .sort__cards {
+        flex-wrap: wrap;
+    }
+    .sort__cards_text {
+        font-size: 12px;
+        line-height: 123%;
+    }
+}
